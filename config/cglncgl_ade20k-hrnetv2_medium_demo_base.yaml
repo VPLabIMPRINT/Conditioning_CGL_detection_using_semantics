@@ -1,0 +1,42 @@
+DATASET:
+  root_dataset: "./data/"
+  list_train: "./data/training_demo_medium_only_lab.odgt"
+  list_val: "./data/validation_medium.odgt"
+  num_class: 2
+  imgSizes: (300, 375, 450, 525, 600)
+  imgMaxSize: 1000
+  padding_constant: 32
+  segm_downsampling_rate: 4
+  random_flip: True
+
+MODEL:
+  arch_encoder: "hrnetv2"
+  arch_decoder: "c1"
+  fc_dim: 720
+
+TRAIN:
+  batch_size_per_gpu: 1
+  num_epoch: 60
+  start_epoch: 30
+  epoch_iters: 1000
+  optim: "SGD"
+  lr_encoder: 0.002
+  lr_decoder: 0.002
+  lr_pow: 0.9
+  beta1: 0.9
+  weight_decay: 1e-4
+  deep_sup_scale: 0.4
+  fix_bn: False
+  workers: 16
+  disp_iter: 20
+  seed: 304
+
+VAL:
+  visualize: True
+  checkpoint: "epoch_55.pth"
+
+TEST:
+  checkpoint: "epoch_55.pth"
+  result: "./cglncgl_ade20k-hrnetv2-c1-new_data-medium-novelty--demo-only-door_300++"
+
+DIR: "ckpt/cglncgl_ade20k-hrnetv2-c1-new_data-medium-novelty--demo-only-door_300++"

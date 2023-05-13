@@ -1,0 +1,3 @@
+conda activate CGL
+python3 -u test_demo.py --gpu 0 --cfg config/cglncgl_ade20k-hrnetv2_medium_live_demo.yaml VAL.visualize True
+
